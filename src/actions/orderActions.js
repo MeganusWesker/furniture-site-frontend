@@ -27,8 +27,13 @@ import {server} from "../store.js"
 export const createOrder = (order) => async (dispatch,getState) =>{
     try {
         dispatch({type:CREATE_ORDER_REQUEST})
-        const config = {header:{"Content-Type":"application/json"}}; 
-        const {data} = await axios.post(`${server}/api/v1/order/new`,order,config);
+      
+        const {data} = await axios.post(`${server}/api/v1/order/new`,order,{
+          headers: {
+               "Content-Type": "application/json",
+            },
+         withCredentials: true,
+       });
 
         dispatch({type: CREATE_ORDER_SUCCESS, payload:data});
         
@@ -44,7 +49,9 @@ export const myOrders = () => async (dispatch,getState) =>{
     try {
         dispatch({type: MY_ORDERS_REQUEST})
      
-        const {data} = await axios.get(`${server}/api/v1/orders/me`);
+        const {data} = await axios.get(`${server}/api/v1/orders/me`,{
+         withCredentials: true,
+       });
 
         dispatch({type: MY_ORDERS_SUCCESS, payload:data.orders});
         
@@ -62,7 +69,9 @@ export const getAllOrders = () => async (dispatch) => {
     try {
       dispatch({ type: ALL_ORDERS_REQUEST });
   
-      const { data } = await axios.get(`${server}/api/v1/admin/orders`);
+      const { data } = await axios.get(`${server}/api/v1/admin/orders`,{
+       withCredentials: true,
+     });
   
       dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
@@ -79,15 +88,16 @@ export const updateOrder = (id, order) => async (dispatch) => {
     try {
       dispatch({ type: UPDATE_ORDER_REQUEST });
   
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
+   
       const { data } = await axios.put(
         `${server}/api/v1/admin/order/${id}`,
         order,
-        config
+        {
+          headers: {
+               "Content-Type": "application/json",
+            },
+         withCredentials: true,
+       }
       );
   
       dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
@@ -120,7 +130,9 @@ export const getOrderDetails = (id) => async (dispatch,getState) =>{
         dispatch({type:ORDER_DETAILS_REQUEST})
         console.log(id);
      
-        const {data} = await axios.get(`${server}/api/v1/order/${id}`);
+        const {data} = await axios.get(`${server}/api/v1/order/${id}`,{
+         withCredentials: true,
+       });
 
         dispatch({type: ORDER_DETAILS_SUCCESS, payload:data.order});
         

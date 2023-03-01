@@ -220,9 +220,9 @@ export const forgotPassword = (email) => async (disptach)=>{
           passwords,
          
           {
-            headers: {
+           headers: {
                 "Content-Type": "application/json",
-            },
+             },
           withCredentials: true,
         }
        );
