@@ -36,7 +36,7 @@ const Home = () => {
       {loading ? <Loading/>:  <>
       <MetaData title="Ecommerce" />
       <div className="banner">
-          <p>Welcome to FurnitureStyle </p>
+          <p>Welcome to Furni style </p>
           <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
           <a href="#container">

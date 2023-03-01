@@ -13,23 +13,22 @@ const Contact = () => {
           <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" alt="phone.png"/></div>
           <div className="contact-info">
             <h1>Phone</h1>
-            <h2>Pranjoy Mukherjee (Operations Manager) - +91 82400 09750 </h2>
-            <h2>Narendra Dutta (Sales Manager) - +91 82402 31209 </h2>
+            <h2>Veer Pratap Singh ( Managing Director) +91 87603 67289</h2>
           </div>
         </div>
         <div className="contact-item">
           <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" alt='post.png'/></div>
           <div className="contact-info">
             <h1>Email</h1>
-            <h2>inquiry@metropolite.net</h2>
-            <h2>customercare@metropolite.net</h2>
+            <h2>inquiry furnistyle@gmail.com</h2>
+            <h2>customercare furnistyle@gmail.com</h2>
           </div>
         </div>
         <div className="contact-item">
           <div className="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" alt='map-marker.png'/></div>
           <div className="contact-info">
             <h1>Address</h1>
-            <h2>10/1, Jadab Ghosh Road, Kolkata - 700061</h2>
+            <h2>12/3 jawed nagar, tiruvantampuram, maharastra 568002</h2>
           </div>
         </div>
       </div>
