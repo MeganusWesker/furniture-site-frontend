@@ -1,12 +1,12 @@
 import React from "react";
 import "./About.css";
 import { Button, Typography } from "@material-ui/core";
-import FacebookIcon from '@mui/icons-material/Facebook';
+import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from "@material-ui/icons/Instagram";
 import logo from '../../../images/logo1.png';
 const About = () => {
   const visitInstagram = () => {
-    window.location = "https://instagram.com/";
+    window.location = "https://www.instagram.com/furni.style.in/?igshid=YmMyMTA2M2Y%3D";
   };
   return (
     <div className="aboutSection">
