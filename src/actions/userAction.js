@@ -273,12 +273,17 @@ export const updateUser = (id, userData) => async (dispatch) => {
     try {
       dispatch({ type: UPDATE_USER_REQUEST });
   
-      const config = { headers: { "Content-Type": "application/json" } };
+     
   
       const { data } = await axios.put(
         `${server}/api/v1/admin/user/${id}`,
         userData,
-        config
+        {
+          headers: {
+               "Content-Type": "application/json",
+            },
+         withCredentials: true,
+       }
       );
   
       dispatch({ type: UPDATE_USER_SUCCESS, payload: data.success });
@@ -296,7 +301,9 @@ export const deleteUser = (id) => async (dispatch) => {
     try {
       dispatch({ type: DELETE_USER_REQUEST });
   
-      const { data } = await axios.delete(`${server}/api/v1/admin/user/${id}`);
+      const { data } = await axios.delete(`${server}/api/v1/admin/user/${id}`,{
+       withCredentials: true,
+     });
   
       dispatch({ type: DELETE_USER_SUCCESS, payload: data });
     } catch (error) {

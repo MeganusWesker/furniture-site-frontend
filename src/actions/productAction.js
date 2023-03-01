@@ -45,7 +45,10 @@ export const getProduct = (keyword="",currentPage=1,price=[0,25000],category,rat
         } 
         
 
-        const {data} = await axios.get(link);
+        const {data} = await axios.get(link,{
+          
+           withCredentials: true,
+         });
        
         console.log(data);
         
@@ -67,7 +70,10 @@ export const getProduct = (keyword="",currentPage=1,price=[0,25000],category,rat
 export const deleteProduct= (id) => async(dispatch) =>{
     try {
         dispatch({type:DELETE_PRODUCT_REQUEST})
-        const {data} = await axios.delete(`${server}/api/v1/admin/product/${id}`);
+        const {data} = await axios.delete(`${server}/api/v1/admin/product/${id}`,{
+ 
+           withCredentials: true,
+         });
            
         
         dispatch({type: DELETE_PRODUCT_SUCCESS,payload:data.success})
@@ -224,7 +230,10 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
       dispatch({ type: DELETE_REVIEW_REQUEST });
   
       const { data } = await axios.delete(
-        `${server}/api/v1/reviews?id=${reviewId}&productId=${productId}`
+        `${server}/api/v1/reviews?id=${reviewId}&productId=${productId}`, {
+      
+           withCredentials: true,
+         }
       );
   
       dispatch({

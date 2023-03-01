@@ -114,7 +114,9 @@ export const deleteOrder = (id) => async (dispatch) => {
     try {
       dispatch({ type: DELETE_ORDER_REQUEST });
   
-      const { data } = await axios.delete(`${server}/api/v1/admin/order/${id}`);
+      const { data } = await axios.delete(`${server}/api/v1/admin/order/${id}`,{
+       withCredentials: true,
+     });
   
       dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
     } catch (error) {
