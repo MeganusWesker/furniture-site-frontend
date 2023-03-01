@@ -46,11 +46,15 @@ export const login = (email,password) => async (disptach)=>{
     try {
         disptach({type:LOGIN_REQUEST});
 
-        const config = {header:{"Content-Type":"application/json"}}; 
+     
         const {data} = await axios.post( `${server}/api/v1/login`,
-        {email,password},
-          config,
-         { withCredentials: true}
+              {email,password},
+                    {
+                      headers: {
+                          "Content-Type": "application/json",
+                      },
+                    withCredentials: true,
+                  }
        );
 
        disptach({type:LOGIN_SUCCESS ,payload:data.user})
@@ -68,8 +72,12 @@ export const register = (userData) => async (disptach)=>{
  try {
      
     disptach({type:REGISTER_USER_REQUEST});
-    const config = {header:{"Content-Type":"multipart/form-data"}}; 
-    const {data} = await axios.post(`${server}/api/v1/register`,userData,config,{ withCredentials: true});
+    const {data} = await axios.post(`${server}/api/v1/register`,userData,{
+      headers: {
+          "Content-Type": "multipart/form-data",
+      },
+    withCredentials: true,
+  });
 
     disptach({type:REGISTER_USER_SUCCESS ,payload:data.user})
 
@@ -86,7 +94,9 @@ export const loadUser = () => async (disptach)=>{
         disptach({type: LOAD_USER_REQUEST});
 
         
-        const {data} = await axios.get(`${server}/api/v1/me`,{ withCredentials: true});
+        const {data} = await axios.get(`${server}/api/v1/me`,{
+        withCredentials: true,
+      });
       
 
        disptach({type: LOAD_USER_SUCCESS ,payload:data.user})
@@ -104,7 +114,9 @@ export const logout= () => async (disptach)=>{
 
     try {
      
-        await axios.get('/api/v1/logout',{ withCredentials: true});
+        await axios.get(`${server}/api/v1/logout`,{
+        withCredentials: true,
+      });
 
        disptach({type:  LOGOUT_SUCCESS})
  
@@ -123,9 +135,14 @@ export const updateProfile = (userData) => async (disptach)=>{
         
        disptach({type:UPDATE_PROFILE_REQUEST});
 
-       const config = {header:{"Content-Type":"multipart/form-data"}}; 
 
-       const {data} = await axios.put(`${server}/api/v1/profile/update`,userData,config, { withCredentials: true});
+
+       const {data} = await axios.put(`${server}/api/v1/profile/update`,userData,{
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+      withCredentials: true,
+    });
       
        disptach({type:UPDATE_PROFILE_SUCCESS ,payload:data.success})
        
@@ -143,10 +160,15 @@ export const updatePassword = (password) => async (disptach)=>{
         
        disptach({type:UPDATE_PASSWORD_REQUEST});
 
-       const config = {header:{"Content-Type":"application/json"}}; 
+    
       
 
-       const {data} = await axios.put(`${server}/api/v1/password/update`,password,config,  { withCredentials: true});
+       const {data} = await axios.put(`${server}/api/v1/password/update`,password,{
+        headers: {
+            "Content-Type": "application/json",
+        },
+      withCredentials: true,
+    });
       
        disptach({type:UPDATE_PASSWORD_SUCCESS,payload:data.success});
     
@@ -164,11 +186,15 @@ export const forgotPassword = (email) => async (disptach)=>{
     try {
         disptach({type: FORGOT_PASSWORD_REQUEST});
 
-        const config = {header:{"Content-Type":"application/json"}}; 
+     
         const {data} = await axios.post(`${server}/api/v1/password/forgot`,
           email,
-          config,
-          { withCredentials: true}
+          {
+            headers: {
+                "Content-Type": "application/json",
+            },
+          withCredentials: true,
+        }
        );
 
      
@@ -189,10 +215,16 @@ export const forgotPassword = (email) => async (disptach)=>{
     try {
         disptach({type:RESET_PASSWORD_REQUEST});
 
-        const config = {header:{"Content-Type":"application/json"}}; 
+       
         const {data} = await axios.put(`${server}/api/v1/password/reset/${token}`,
           passwords,
-          config
+         
+          {
+            headers: {
+                "Content-Type": "application/json",
+            },
+          withCredentials: true,
+        }
        );
 
        disptach({type: RESET_PASSWORD_SUCCESS,payload:data.success})
@@ -208,7 +240,10 @@ export const forgotPassword = (email) => async (disptach)=>{
 export const getAllUsers = () => async (dispatch) => {
     try {
       dispatch({ type: ALL_USERS_REQUEST });
-      const { data } = await axios.get(`${server}/api/v1/admin/users`,{ withCredentials: true});
+      const { data } = await axios.get(`${server}/api/v1/admin/users`,{
+
+      withCredentials: true,
+    });
   
       dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
     } catch (error) {
@@ -221,7 +256,10 @@ export const getAllUsers = () => async (dispatch) => {
 export const getUserDetails = (id) => async (dispatch) => {
     try {
       dispatch({ type: USER_DETAILS_REQUEST });
-      const { data } = await axios.get(`${server}/api/v1/admin/user/${id}`,  { withCredentials: true});
+      const { data } = await axios.get(`${server}/api/v1/admin/user/${id}`,{
+    
+      withCredentials: true,
+    });
   
       dispatch({ type: USER_DETAILS_SUCCESS, payload: data.user });
     } catch (error) {
