@@ -8,6 +8,8 @@ export const addItemsToCart = (id,quantity) => async (dispatch,getState)=>{
          withCredentials: true,
        });
 
+       console.log(data);
+
         dispatch({
             type: ADD_TO_CART,
             payload: {
