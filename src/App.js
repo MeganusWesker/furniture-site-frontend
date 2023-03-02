@@ -41,7 +41,7 @@ import UpdateUser from './Component/admin/UpdateUser.js'
 import ProductReviews from "./Component/admin/ProductReviews.js"
 import About from './Component/layout/About/About';
 import Contact from './Component/layout/Contact/Contact';
-
+import {server} from "./store.js"
 
 
 
@@ -56,10 +56,8 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const { data } = await axios.get('/api/v1/stripeapikey');
+    const { data } = await axios.get(`${server}/api/v1/stripeapikey`);
     setStripeApiKey(data.stripeApiKey);
-
-
   }
 
 

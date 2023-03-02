@@ -54,8 +54,8 @@ const Footer = () => {
                     <div className="footer-column">
                          <h4>follow us</h4>
                          <div className="social-links">
-                              <a href="https://www.facebook.com/metropolite000/" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
-                              <a href=" https://instagram.com/metropolite000?igshid=YmMyMTA2M2Y=" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
+                              <a href="https://m.facebook.com/alielpogdade/?_rdr" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
+                              <a href="https://www.instagram.com/furni.style.in/?igshid=YmMyMTA2M2Y%3D" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
                               <a href=" https://twitter.com/metropolite000?t=r6KVTS_aM3Z_g6rKmcCPqg&s=08" target='_blank' rel="noreferrer"><i className="fab fa-twitter"></i></a>
                               <a href="https://www.linkedin.com/in/metro-polite-68a429238/" target='_blank' rel="noreferrer" ><i className="fab fa-linkedin-in"></i></a>
                     </div>
