@@ -61,21 +61,26 @@ const Payment = () => {
     payBtn.current.disabled = true;
 
     try {
-      
+
       const { data } = await axios.post(
         `${server}/api/v1/payment/process`,
         paymentData,
+      
         {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials:true,
+        
         }
       );
+
+      console.log(data);
 
       const client_secret = data.client_secret;
 
       if (!stripe || !elements) return;
+
+      console.log("chala kya?");
 
       const result = await stripe.confirmCardPayment(client_secret, {
         payment_method: {

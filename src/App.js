@@ -61,8 +61,6 @@ function App() {
       withCredentials:true,
     });
 
-    console.log(data);
-    console.log(data.setStripeApiKey);
     setStripeApiKey(data.stripeApiKey);
   }
 
