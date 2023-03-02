@@ -19,7 +19,7 @@ import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { useHistory } from "react-router-dom";
 import { createOrder, clearErrors } from "../../actions/orderActions";
-
+import { server } from "../../store";
 
 const Payment = () => {
 
@@ -61,15 +61,16 @@ const Payment = () => {
     payBtn.current.disabled = true;
 
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
+      
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        `${server}/api/v1/payment/process`,
         paymentData,
-        config
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials:true,
+        }
       );
 
       const client_secret = data.client_secret;
