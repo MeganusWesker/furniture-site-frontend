@@ -64,7 +64,7 @@ const Payment = () => {
 
       const { data } = await axios.post(
         `${server}/api/v1/payment/process`,
-        paymentData,
+         {amount:paymentData},
       
         {
           headers: {
