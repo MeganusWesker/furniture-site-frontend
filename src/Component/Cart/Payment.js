@@ -62,17 +62,14 @@ const Payment = () => {
 
     try {
 
-      const { data } = await axios.post(
-        `${server}/api/v1/payment/process`,
-         {amount:paymentData},
-      
-        {
-          headers: {
-            "Content-Type": "application/json",
+      const {data}=await axios.post(`${server}/api/v1/payment/process`, {amount:paymentData},{
+     
+        headers:{
+            "Content-Type":"application/json"
           },
-        
-        }
-      );
+  
+          withCredentials: true,
+      });
 
       console.log(data);
 
