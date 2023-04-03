@@ -51,7 +51,7 @@ const store = createStore(
 
 export default store;
 
-export const server="https://furniture-style-site.onrender.com";
+export const server="https://furniture-site-theta.vercel.app";
 
 
 
